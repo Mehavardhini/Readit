@@ -1,8 +1,18 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<h1>Listing Links</h1>
+<!-- <h1>Listing Links</h1> -->
 
-<table>
+<div class="container col-md-8 col-md-offset-2">
+  <% @links.each do |link| %>
+    <%= link_to(link) do %>
+      <h3><%= link.title %></h3>
+      <p>Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.email %>
+      <hr>
+    <% end %>
+  <% end %>
+</div>
+
+<!-- <table>
   <thead>
     <tr>
       <th>Title</th>
@@ -20,10 +30,10 @@
         <% if link.user == current_user %>
           <td><%= link_to 'Edit', edit_link_path(link) %></td>
           <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>  
+        <% end %>
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->
 
 <br>
