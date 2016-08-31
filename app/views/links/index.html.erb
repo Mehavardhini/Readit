@@ -7,8 +7,22 @@
     <%= link_to(link) do %>
       <h3><%= link.title %></h3>
       <p>Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.email %>
+        <div class="btn-group">
+          <a class="btn btn-default btn-sm" href="<%= link.url %>" >Visit Link </a>
+          <%= link_to like_link_path(link), method: :put, class: "btn btn-default btn-sm" do %>
+            <span class="glyphicon glyphicon-chevron-up"></span>
+            upvote
+            <%= link.get_upvotes.size %>
+          <% end %>
+          <%= link_to dislike_link_path(link), method: :put, class: "btn btn-default btn-sm" do %>
+            <span class="glyphicon glyphicon-chevron-down"></span>
+            downvote
+            <%= link.get_downvotes.size %>
+          <% end %>
+        </div>
       <hr>
     <% end %>
+
   <% end %>
 </div>
 
